@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<style>
+.dropdown {position: relative; display: inline-block;}
+.dropbtn {background-color: #3498DB; color: white; padding: 16px; font-size: 16px; border: none;}
+.dropdown-content {display: none; position: absolute; background-color: #f1f1f1; min-width: 160px; z-index: 1;}
+.dropdown-content a {color: black; padding: 12px 16px; text-decoration: none; display: block;}
+.show {display: block;}
+.btn-resume {background-color:green; color: white; padding: 16px; font-size: 16px; border-color: yellow;}
+body {background-image:url("bbb.jpg");}
+</style>
+<body>
+<div class="dropdown">
+<button onclick="myFunction()" class="dropbtn">目錄</button>
+<div id="myDropdown" class="dropdown-content">
+	<a href="q1.html">難度易</a>
+	<a href="q2.html">難度中</a>
+	<a href="q3.html">難度高</a>
+	<button class="openbtn" onclick="openNav()" style="font-size:125%">小提示</button></div>
+
+</div>
+<button type="button" class="btn-resume"onclick="myFunc()">遊戲開始(30s)</button>
+<script>
+	function myFunc(){
+	var id = setTimeout(frame, 30000)}
+	function frame() {
+alert("時間到了~")
+}
+	function openNav(){
+	alert("翻牌遊戲哪有什麼提示~")}
+function myFunction() {
+document.getElementById("myDropdown").classList.toggle("show");
+}
+window.onclick = function(event) {
+if (!event.target.matches('.dropbtn')) {
+var dropdowns = document.getElementsByClassName("dropdown-content");
+var i;
+for (i = 0; i < dropdowns.length; i++) {
+var openDropdown = dropdowns[i];
+if (openDropdown.classList.contains('show')) {openDropdown.classList.remove('show');}
+}}
+}
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JOJO的記憶小遊戲</title>
+	<script language="javascript">
+		var pai=[1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
+		var flag=false;
+		var oneid=-1;
+    	function fanpai(id){
+			if(pai[id]==-1){
+					return;
+				}
+				document.getElementById("img"+id).src="img/image"+pai[id]+".jpg" ;
+				if(flag){
+					if(pai[id]==pai[oneid]){
+						pai[id]=-1;
+						pai[oneid]=-1;
+					}
+					else{
+						setTimeout("koupai("+id+","+oneid+")",600);
+					}
+					oneid=-1;
+					flag=false;
+				}
+				else{
+					oneid=id;
+					flag=true;
+				}
+				checkSuccess();
+		}
+
+		function xipai(){
+			var a,b,temp;
+			for(i=0;i<16;i++){
+				var a=Math.floor(Math.random()*16);
+				var b=Math.floor(Math.random()*16);
+				temp=pai[a];
+				pai[a]=pai[b];
+				pai[b]=temp;
+			}
+		}
+
+		function koupai(id,oneid){
+			document.getElementById("img"+id).src="img/image0.jpg";
+			document.getElementById("img"+oneid).src="img/image0.jpg";
+		}
+	
+		function checkSuccess(){
+			for(var i=0;i<16;i++){
+				if(pai[i]!=-1)
+					return;
+				}
+			alert("NICE 太神拉!");
+			location.reload();
+		}
+    </script>
+</head>
+<body>
+
+	<center>
+    <br /><br />
+    <h1 style="color:white;font-size:400%;margin-top:-50px">JOJO的奇妙冒險記憶翻牌遊戲</h1>
+        <br />
+    	<table>
+        <tr>
+        <td><img src="img/image0.jpg" id="img0" onclick="fanpai(0)"/></td>
+        <td><img src="img/image0.jpg" id="img1" onclick="fanpai(1)"/></td>
+        <td><img src="img/image0.jpg" id="img2" onclick="fanpai(2)"/></td>
+        <td><img src="img/image0.jpg" id="img3" onclick="fanpai(3)"/></td>
+        </tr>
+        <tr>
+        <td><img src="img/image0.jpg" id="img4" onclick="fanpai(4)"/></td>
+        <td><img src="img/image0.jpg" id="img5" onclick="fanpai(5)"/></td>
+        <td><img src="img/image0.jpg" id="img6" onclick="fanpai(6)"/></td>
+        <td><img src="img/image0.jpg" id="img7" onclick="fanpai(7)"/></td>
+        </tr>
+        <tr>
+        <td><img src="img/image0.jpg" id="img8" onclick="fanpai(8)"/></td>
+        <td><img src="img/image0.jpg" id="img9" onclick="fanpai(9)"/></td>
+        <td><img src="img/image0.jpg" id="img10" onclick="fanpai(10)"/></td>
+        <td><img src="img/image0.jpg" id="img11" onclick="fanpai(11)"/></td>
+        </tr>
+        <tr>
+        <td><img src="img/image0.jpg" id="img12" onclick="fanpai(12)"/></td>
+        <td><img src="img/image0.jpg" id="img13" onclick="fanpai(13)"/></td>
+        <td><img src="img/image0.jpg" id="img14" onclick="fanpai(14)"/></td>
+        <td><img src="img/image0.jpg" id="img15" onclick="fanpai(15)"/></td>
+        </tr>
+        </table>
+    </center>
+</body>
+<script language="javascript">
+	xipai();
+</script>
+</html>
